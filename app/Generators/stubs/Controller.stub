@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\{{modelName}};
+use App\Http\Requests\{{modelName}}Request;
+
+
+class {{modelName}}Controller extends Controller
+{
+    public function index()
+    {
+        ${{modelNamePluralLowerCase}} = {{modelName}}::latest()->get();
+
+        return view('{{modelNamePluralLowerCase}}.index',compact('{{modelNamePluralLowerCase}}'));
+    }
+
+    public function store({{modelName}}Request $request)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::create($request->all());
+
+        return redirect('/{{modelNamePluralLowerCase}}');
+
+    }
+
+    public function create()
+    {
+        return view('{{modelNamePluralLowerCase}}.create');
+    }
+
+
+    public function edit()
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
+        return view('{{modelNamePluralLowerCase}}.edit',compact({{modelNameSingularLowerCase}}));
+    }
+
+    public function update({{modelName}}Request $request, $id)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
+        ${{modelNameSingularLowerCase}}->update($request->all());
+
+        return redirect('/{{modelNamePluralLowerCase}}');
+    }
+
+    public function destroy($id)
+    {
+        {{modelName}}::destroy($id);
+        return response("success", 204);
+    }
+}

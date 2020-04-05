@@ -18,3 +18,11 @@ Laravel Roles and Permission Management with Core ui ingegrated.
 
 
 #### Extract to a package 
+
+# CRUD Generator 
+A helpful crud generator for both API and Server Side Applictions.
+
+```php 
+php artisan crud:generate ModelName
+```
+will generate model,controller,migration and register the routes. for API pls check CrudGeneratorService and uncomment.
