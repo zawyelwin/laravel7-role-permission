@@ -22,25 +22,29 @@
 
 <body class="c-app">
 
-    @include('admin.layouts.sidebar')
+    <div id="app">
 
-    <div class="c-wrapper c-fixed-components">
-        @include('admin.layouts.header')
+        @include('admin.layouts.sidebar')
 
-        <div class="c-body">
-            <main class="c-main">
-                <div class="container-fluid">
-                    <div class="fade-in">
-                        @yield('content')
+        <div class="c-wrapper c-fixed-components">
+            @include('admin.layouts.header')
+
+            <div class="c-body">
+                <main class="c-main">
+                    <div class="container-fluid">
+                        <div class="fade-in">
+                            @yield('content')
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
 
-            <footer class="c-footer">
-                {{-- <div><a href="https://coreui.io">ubuntu-mm</a> © 2020 Makerspace.</div> --}}
-                <div class="mfs-auto">Powered by&nbsp;<a href="https://ubuntu-mm.net/">Ubuntu MM</a></div>
-            </footer>
+                <footer class="c-footer">
+                    {{-- <div><a href="https://coreui.io">ubuntu-mm</a> © 2020 Makerspace.</div> --}}
+                    <div class="mfs-auto">Powered by&nbsp;<a href="https://ubuntu-mm.net/">Ubuntu MM</a></div>
+                </footer>
+            </div>
         </div>
+
     </div>
 </body>
 
@@ -49,10 +53,10 @@
 <script src="/admin/js/app.js"></script>
 <script src="/admin/js/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
 <script>
     $('#alert').delay(5000).fadeOut('slow');
-
 
     @if($error = session()->get('success'))
         Swal.fire({
@@ -60,7 +64,7 @@
             type: 'success',
             text: "{{ $message ?? 'success' }}",
             showConfirmButton: false,
-            width: 300,
+            width: 250,
             timer: 2000
         })
     @endif
@@ -71,7 +75,7 @@
                 type: 'error',
                 text: "{{ $error->first() }}",
                 showConfirmButton: false,
-                width: 300,
+                width: 250,
                 timer: 2000
             })
     @endif

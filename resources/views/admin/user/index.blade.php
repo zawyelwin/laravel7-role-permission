@@ -15,7 +15,7 @@
 
     @include('admin.layouts.flash')
 
-    <div class="shadow card">
+    <div class="shadow card ">
 
       <div class="card-header">
         <i class="fa fa-align-justify"></i> Users
@@ -40,17 +40,15 @@
               <td>{{ $user->roles()->pluck('name')->implode(' | ') }}</td>
 
               <td>
-              @can('edit_users')
+                @can('edit_users')
                 <a href="{{ route('users.edit', $user->id) }}" class="text-warning mr-2">
                   <i class="fa fa-edit"></i> Edit
                 </a>
-              @endcan
+                @endcan
 
-              @can('delete_users')
-                <a href="javascript:void(0);" onClick="del_user({{ $user->id }})" class="text-danger">
-                  <i class="far fa-trash-alt"></i> Delete
-                </a>
-              @endcan
+                @can('delete_users')
+                <delete-record id="{{ $user->id }}" url="/admin/users"></delete-record>
+                @endcan
               </td>
             </tr>
             @endforeach
@@ -62,33 +60,4 @@
   </div>
 </div>
 
-@endsection
-
-@section('script')
-<script>
-    function del_user(id) {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover it!",
-            type: "warning",
-            timer: 3000,
-            confirmButtonColor: '#e64942',
-            confirmButtonText: 'Yes',
-            showCancelButton: true,
-            reverseButtons: true
-        })
-            .then((result) => {
-                if (result.value) {
-                    axios.delete('/admin/users/'+ id)
-                        .then(function () {
-                            Swal.fire( 'Deleted!', 'The record has been deleted.', 'success')
-                                .then( () =>  {  location.reload(); });
-                        })
-                        .catch(function (error) {
-                            Swal.fire({ title: 'Opps...', text : error.response.data.message, type : 'error' })
-                        });
-                }
-            });
-      }
-</script>
 @endsection

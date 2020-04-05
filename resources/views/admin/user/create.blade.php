@@ -16,14 +16,16 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="name">Name</label>
                         <div class="col-md-4">
-                            <input class="form-control" name="name" value="{{ old('name') }}" required autofocus autocomplete="off">
+                            <input class="form-control" name="name" value="{{ old('name') }}" required autofocus
+                                autocomplete="off">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="email">Email</label>
                         <div class="col-md-4">
-                            <input class="form-control" name="email" type="email" value="{{ old('email') }}" required autofocus autocomplete="off">
+                            <input class="form-control" name="email" type="email" value="{{ old('email') }}" required
+                                autofocus autocomplete="off">
                         </div>
                     </div>
 
@@ -70,6 +72,7 @@
 
 
 @section('script')
+{!! JsValidator::formRequest('App\Http\Requests\UserRequest'); !!}
 <script>
     $('#select-role').selectize({
           maxItems: 10,
