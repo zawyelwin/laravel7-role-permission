@@ -10,14 +10,14 @@ Laravel Roles and Permission Management with Core ui ingegrated.
 - CoreUI Icons
 
 #### Create Permission
-```php 
+```bash 
 php artisan auth:permission user
 ``` 
 - will create 'view_users','create_users','edit_users','delete_users' permissions.
 
 
 #### Create Role
-```php 
+```bash
 php artisan permission:create-role
 ``` 
 "Role Name" - create a new role.
@@ -28,7 +28,7 @@ php artisan permission:create-role
 # CRUD Generator 
 A helpful crud generator for both API and Server Side Applictions.
 
-```php 
+```bash
 php artisan crud:generate ModelName
 ```
 will generate model,controller,migration and register the routes. for API pls check CrudGeneratorService and uncomment.
