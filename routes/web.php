@@ -29,7 +29,6 @@ Route::group([
 
     Route::resource('users', 'UsersController');
     Route::resource('roles', 'RolesController');
-
     
     Route::get('password','ResetPasswordController@showPasswordResetFrom');
     Route::patch('password/change', 'ResetPasswordController@update')->name('password.change');
